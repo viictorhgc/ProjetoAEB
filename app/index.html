@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html ng-app="usuarios">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="UTF-8">
+    <title>Filmes que já assisti</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/filmes.controller.js"></script>
+    <script src="scripts/filme.directive.js"></script>
+    <script src="scripts/meus-usuarios.factory.js"></script>
+</head>
+<body>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <!-- Include all compiled plugins (below), or include individual files as needed -->
+ <script src="bootstrap/js/bootstrap.min.js"></script>
+ <ul class="nav nav-tabs">
+ <li class="active"><a href="#home">Home</a></li>
+  <li><a href="#listar">Listar Usuários</a></li>
+  <li><a href="#adicionar">Adicionar um usuário</a></li>
+  <li><a href="#alterar">Altere um usuário</a></li>
+  <li><a href="#buscar">Busque um usuário</a></li>
+</ul>
+
+<article id="home">
+    <img src="aeb.png" width="300px" align="center">
+</article>
+<article id="listar">
+    <div class="container" ng-controller="UsuariosController">
+        <h1>{{ titulo }}</h1>
+
+        <div class="lista-usuarios">
+            <div aw-filme="f" fn-fechar="removerUsuario(f.id)" ng-repeat="f in usuarios"></div>
+        </div>
+
+        
+        
+    </article>
+
+    <article id="alterar">
+        <div class="container" ng-controller="UsuariosController">
+          
+          <hr>
+
+          <form name="formulario" class="form-filmes" ng-submit="alterarUsuario()">
+            <h1>Alterar Usuário</h1>
+            <div class="form-campo pequeno">
+                <label for="id">ID</label>
+                <input type="text" id="id" name="id" ng-model="novoUsuario.id">
+            </div>
+            <div class="form-campo medio">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" ng-model="novoUsuario.username">
+            </div>
+            <div class="form-campo medio">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" ng-model="novoUsuario.password">
+            </div>
+            <footer>
+                <button type="reset">Limpar</button>
+                <button type="submit">Salvar</button>
+            </footer>
+        </form>
+    </div>
+</article>
+
+<article id="adicionar">
+    <div class="container" ng-controller="UsuariosController">
+        <hr>
+        <form name="formulario" class="form-filmes" ng-submit="criarUsuario()">
+            <h1>Adicionar Usuário</h1>
+            <div class="form-campo medio">
+                <label for="password">Usuário</label>
+                <input type="text" id="username" name="username" ng-model="novoUsuario.username">
+            </div>
+            <div class="form-campo medio">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" ng-model="novoUsuario.password">
+            </div>
+            <footer>
+                <button type="reset">Limpar</button>
+                <button type="submit">Salvar</button>
+            </footer>
+        </form>
+        
+
+    </article>
+
+
+    <article id="buscar">
+        <div class="container" ng-controller="UsuariosController">
+            <hr>
+            <form name="formulario" class="form-filmes" ng-submit="buscarUsuario()">
+                <h1>Buscar Usuário</h1>
+                <div class="form-campo pequeno">
+                    <label for="id">Usuário</label>
+                    <input type="text" id="id" name="id" ng-model="novoUsuario.id">
+                </div>
+                <footer>
+                    <button type="reset">Limpar</button>
+                    <button type="submit">Salvar</button>
+                </footer>
+            </form>
+            
+
+        </article>
+
+
+
+    </body>
+    </html>
